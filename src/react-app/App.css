@@ -1,45 +1,162 @@
-#root {
-	max-width: 1280px;
-	margin: 0 auto;
-	padding: 2rem;
-	text-align: center;
+.heart-rate-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  min-height: 100vh;
+  background: #0a0a1a;
 }
 
-.logo {
-	height: 6em;
-	padding: 1.5em;
-	will-change: filter;
-	transition: filter 300ms;
-}
-.logo:hover {
-	filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-	filter: drop-shadow(0 0 2em #61dafbaa);
-}
-.logo.cloudflare:hover {
-	filter: drop-shadow(0 0 2em #f6821faa);
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
 }
 
-@keyframes logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+.camera-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 30px rgba(0, 255, 128, 0.1),
+    0 0 60px rgba(0, 255, 128, 0.05);
+  border: 1px solid rgba(0, 255, 128, 0.15);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	a:nth-of-type(2) .logo {
-		animation: logo-spin infinite 20s linear;
-	}
+.camera-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-.card {
-	padding: 2em;
+.bpm-display {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: right;
+  border: 1px solid rgba(0, 255, 128, 0.2);
 }
 
-.read-the-docs {
-	color: #888;
+.bpm-value {
+  font-size: 72px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #00ff88;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.bpm-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 2px;
+}
+
+.signal-quality {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.quality-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.quality-text {
+  font-size: 12px;
+  transition: color 0.3s;
+}
+
+.charts-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 1300px;
+  justify-content: center;
+}
+
+.waveform-container {
+  flex: 1;
+  min-width: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.waveform-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fps-counter {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  font-variant-numeric: tabular-nums;
+}
+
+.lock-indicator {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.lock-locked {
+  color: #00ff88;
+}
+
+.lock-unsupported {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.lock-failed {
+  color: #ff6644;
+}
+
+.error-message {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+}
+
+.error-message h2 {
+  color: #ff4444;
+  margin-bottom: 16px;
+}
+
+.error-message p {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
